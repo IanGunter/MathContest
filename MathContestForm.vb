@@ -5,14 +5,14 @@
 'https://github.com/IanGunter/MathContest.git
 
 
-
-
-
+'remove blank lines - TJR
+Option Explicit On
+Option Strict On
 
 Public Class MathContestForm
-    'Dim variables to be used across different subs
+    'Dim variables to be used across different subs - Global - TJR
     Dim attempts As Integer
-    Dim correctattempts As Integer
+    Dim correctattempts As Integer ' camelCase - TJR
 
     'ClearButton clears all fields and resets the program.
     Public Sub clearButton_Click(sender As Object, e As EventArgs) Handles clearButton.Click
@@ -52,7 +52,7 @@ Public Class MathContestForm
         'If statements change the value of textboxes 1st number and second number depending on the question assigned.
         If addRadioButton.Checked = True Then
 
-            firstNumberTextbox.Text = 5
+            firstNumberTextbox.Text = 5 ' either generate random or let user enter new numbers - TJR
             secondNumberTextbox.Text = 3
 
             rightAnswer = CInt(firstNumberTextbox.Text) + CInt(secondNumberTextbox.Text)
@@ -97,7 +97,7 @@ Public Class MathContestForm
             answerTextbox.ResetText()
         End If
 
-
+        'remove blank lines - TJR
 
     End Sub
 
@@ -122,7 +122,7 @@ Public Class MathContestForm
         submitButton.Enabled = False
         summaryButton.Enabled = False
 
-
+        'remove blank lines - TJR
     End Sub
 
     Private Sub nameTextBox_TextChanged(sender As Object, e As EventArgs) Handles nameTextBox.TextChanged
@@ -133,10 +133,10 @@ Public Class MathContestForm
             ageTextBox.Enabled = False
         End If
 
-
+        'remove blank lines - TJR
     End Sub
 
-    Private Sub gradeTextBox_Unselected(sender As Object, e As EventArgs) Handles gradeTextBox.Leave
+    Private Sub gradeTextBox_Unselected(sender As Object, e As EventArgs) Handles gradeTextBox.Leave ' too many pop ups - TJR
         Dim Grade As Integer
 
         ''When grade texbox is unselected the input is checked to see if they are integers and within the parameters required. 
@@ -159,7 +159,7 @@ Public Class MathContestForm
             gradeTextBox.ResetText()
             MsgBox("Student not eligible to compete.")
 
-
+            'remove blank lines - TJR
         End If
     End Sub
     Private Sub gradeTextBox_TextChanged(sender As Object, e As EventArgs) Handles gradeTextBox.TextChanged
@@ -174,18 +174,18 @@ Public Class MathContestForm
 
     End Sub
 
-    Private Sub ageTextBox_Unselected(sender As Object, e As EventArgs) Handles ageTextBox.Leave
+    Private Sub ageTextBox_Unselected(sender As Object, e As EventArgs) Handles ageTextBox.Leave ' too many pop ups - TJR
         Dim age As Integer
 
         'Set parameters for age and checks if age is an integer once the texbox is unselected.
 
         If ageTextBox.Text <> "" Then
 
-
+            'remove blank lines - TJR
             Try
                 age = CInt(ageTextBox.Text)
 
-
+                'remove blank lines - TJR
 
             Catch ex As Exception
 
@@ -222,7 +222,7 @@ Public Class MathContestForm
 
         answer = CInt(firstNumberTextbox.Text) + CInt(secondNumberTextbox.Text)
 
-
+        'remove blank lines - TJR
     End Sub
 
     Private Sub subtractRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles subtractRadioButton.CheckedChanged
