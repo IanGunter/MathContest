@@ -4,11 +4,9 @@
 'Math Contest
 'https://github.com/IanGunter/MathContest.git
 
-
-
-
-
-
+Option Strict On
+Option Compare Text
+Option Explicit On
 Public Class MathContestForm
     'Dim variables to be used across different subs
     Dim attempts As Integer
@@ -51,54 +49,37 @@ Public Class MathContestForm
 
         'If statements change the value of textboxes 1st number and second number depending on the question assigned.
         If addRadioButton.Checked = True Then
-
-            firstNumberTextbox.Text = 5
-            secondNumberTextbox.Text = 3
-
+            firstNumberTextbox.Text = CStr(5)
+            secondNumberTextbox.Text = CStr(3)
             rightAnswer = CInt(firstNumberTextbox.Text) + CInt(secondNumberTextbox.Text)
         End If
 
         If subtractRadioButton.Checked = True Then
-
-            firstNumberTextbox.Text = 21
-            secondNumberTextbox.Text = 9
-
+            firstNumberTextbox.Text = CStr(21)
+            secondNumberTextbox.Text = CStr(9)
             rightAnswer = CInt(firstNumberTextbox.Text) - CInt(secondNumberTextbox.Text)
         End If
 
         If multiplyRadioButton.Checked = True Then
-
-            firstNumberTextbox.Text = 5
-            secondNumberTextbox.Text = 7
-
+            firstNumberTextbox.Text = CStr(5)
+            secondNumberTextbox.Text = CStr(7)
             rightAnswer = CInt(firstNumberTextbox.Text) * CInt(secondNumberTextbox.Text)
         End If
 
         If divideRadioButton.Checked = True Then
-
-            firstNumberTextbox.Text = 36
-            secondNumberTextbox.Text = 4
-
-            rightAnswer = CInt(firstNumberTextbox.Text) / CInt(secondNumberTextbox.Text)
+            firstNumberTextbox.Text = CStr(36)
+            secondNumberTextbox.Text = CStr(4)
+            rightAnswer = CInt(CInt(firstNumberTextbox.Text) / CInt(secondNumberTextbox.Text))
         End If
 
-
         If rightAnswer = studentAnswer Then
-
             'Adds 1 to the amount of correct answers submitted by the user.
             correctattempts += 1
-
-
             MsgBox("Congratulation! That is the correct answer.")
             answerTextbox.ResetText()
-
-
         Else MsgBox("Incorrect. The correct answer is " & CStr(rightAnswer))
             answerTextbox.ResetText()
         End If
-
-
-
     End Sub
 
     Public Sub summaryButton_Click(sender As Object, e As EventArgs) Handles summaryButton.Click
@@ -121,8 +102,6 @@ Public Class MathContestForm
         answerTextbox.Enabled = False
         submitButton.Enabled = False
         summaryButton.Enabled = False
-
-
     End Sub
 
     Private Sub nameTextBox_TextChanged(sender As Object, e As EventArgs) Handles nameTextBox.TextChanged
@@ -132,8 +111,6 @@ Public Class MathContestForm
         Else
             ageTextBox.Enabled = False
         End If
-
-
     End Sub
 
     Private Sub gradeTextBox_Unselected(sender As Object, e As EventArgs) Handles gradeTextBox.Leave
@@ -158,8 +135,6 @@ Public Class MathContestForm
         If Grade < 1 Or Grade > 4 Then
             gradeTextBox.ResetText()
             MsgBox("Student not eligible to compete.")
-
-
         End If
     End Sub
     Private Sub gradeTextBox_TextChanged(sender As Object, e As EventArgs) Handles gradeTextBox.TextChanged
@@ -171,7 +146,6 @@ Public Class MathContestForm
         Else
             problemTypeGroupBox.Enabled = False
         End If
-
     End Sub
 
     Private Sub ageTextBox_Unselected(sender As Object, e As EventArgs) Handles ageTextBox.Leave
@@ -180,31 +154,22 @@ Public Class MathContestForm
         'Set parameters for age and checks if age is an integer once the texbox is unselected.
 
         If ageTextBox.Text <> "" Then
-
-
             Try
                 age = CInt(ageTextBox.Text)
-
-
-
             Catch ex As Exception
 
                 ageTextBox.ResetText()
                 MsgBox("Enter Student Age as a Number.")
                 Exit Sub
-
             End Try
-
         Else
             gradeTextBox.Enabled = False
-
         End If
 
         If age < 7 Or age > 11 Then
             ageTextBox.ResetText()
             MsgBox("Student not eligible to compete.")
         End If
-
     End Sub
 
     Private Sub ageTextBox_TextChanged(sender As Object, e As EventArgs) Handles ageTextBox.TextChanged
@@ -217,27 +182,25 @@ Public Class MathContestForm
 
     Private Sub addRadioButton_Checked(sender As Object, e As EventArgs) Handles addRadioButton.CheckedChanged
         Dim answer As Integer
-        firstNumberTextbox.Text = 5
-        secondNumberTextbox.Text = 3
+        firstNumberTextbox.Text = CStr(5)
+        secondNumberTextbox.Text = CStr(3)
 
         answer = CInt(firstNumberTextbox.Text) + CInt(secondNumberTextbox.Text)
-
-
     End Sub
 
     Private Sub subtractRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles subtractRadioButton.CheckedChanged
-        firstNumberTextbox.Text = 21
-        secondNumberTextbox.Text = 9
+        firstNumberTextbox.Text = CStr(21)
+        secondNumberTextbox.Text = CStr(9)
     End Sub
 
     Private Sub multiplyRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles multiplyRadioButton.CheckedChanged
-        firstNumberTextbox.Text = 5
-        secondNumberTextbox.Text = 7
+        firstNumberTextbox.Text = CStr(5)
+        secondNumberTextbox.Text = CStr(7)
     End Sub
 
     Private Sub divideRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles divideRadioButton.CheckedChanged
-        firstNumberTextbox.Text = 36
-        secondNumberTextbox.Text = 4
+        firstNumberTextbox.Text = CStr(36)
+        secondNumberTextbox.Text = CStr(4)
     End Sub
 
     Private Sub answerTextbox_TextChanged(sender As Object, e As EventArgs) Handles answerTextbox.TextChanged
